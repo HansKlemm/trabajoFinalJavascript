@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabajo Obligatorio Javascript</title>
+
+<!-- LINKS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/folder-svgrepo-com.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../css/misEstilos.css">
+    <link rel="stylesheet" href="../css/lightbox.css">
+
+<!-- RECORDAR: Colocar el archivo minificado (.min).!!!!! -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+        ⁡⁣⁢⁣<!-- este es el h1 y logo -->⁡
+            <div class="logo">
+                <img src="../assets/images/folder-svgrepo-com.svg" alt="logo">
+                <h1 class="protest">Hans Klemm</h1>
+            </div>
+        ⁡⁢⁣⁢<!-- este es el navbar -->⁡
+            <div class="links-navbar" id="links-navbar">
+
+                <div class="submenu">
+                    <a href="/index.html" class="item-navbar">
+                        <img src="../assets/images/archive-down-minimlistic-svgrepo-com(1).svg" alt="">
+                        Inicio
+                    </a>  
+                    <div class="items-submenu">
+                        <a href="#games" class="item-submenu"><b>Juegos</b></a>
+                        <a href="#photos" class="item-submenu"><b>Fotografias</b></a>
+                        <a href="#videos" class="item-submenu"><b>Videos</b></a>
+                    </div>
+                </div>
+                <a href="galeria.html" class="item-navbar">Galeria</a>
+                <a href="#" class="item-navbar estado">Presupuesto</a>
+                <a href="./contacto.html" class="item-navbar">Contacto</a>
+            </div>
+        </nav>
+
+    </header>
+
+    <main>
+        <h2 class="titulo">PRESUPUESTO</h2>
+        <section class="section">
+            <form id="formulario" name="formulario" action="mensajeEnviado.html" method="get" target="_blank">
+
+                <div class="sectionsForm">
+
+                    <div class="datosContacto">
+                        <fieldset>
+                            <legend><h4>Datos de contacto:</h4></legend>
+                            <label for="nombres">Nombres:</label>
+                            <input type="text" id="nombres" name="nombres" placeholder="Nombres completos...">
+                            <span class="error" id="nombreError"></span>
+                        
+                            <label for="apellidos">Apellidos:</label>
+                            <input type="text" id="apellidos" name="apellidos" placeholder="Ingrese apellidos completos...">
+                            <span class="error" id="apellidosError"></span>
+    
+                            <label for="telefono">Telefono de contacto:</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="Ingrese solo numeros ...">
+                            <span class="error" id="telefonoError"></span>
+        
+                            <label for="email">Correo electronico:</label>
+                            <input type="email" id="email" name="email" placeholder="pe****@****.com...">
+                            <span class="error" id="emailError"></span>
+                        </fieldset>
+                    </div>
+                    <br>
+                    
+                    <br>
+                    <div class="presupuesto">
+                        <fieldset>
+                            <legend><h4>Presupuesto:</h4></legend>
+                            <div>
+                                <label for="habitacion"><b>Tipo de habitación:</b></label>
+                                <select id="habitacion">
+                                    <option value="400">Habitacion simple con ducha 400€</option>
+                                    <option value="450">Habitacion simple con tina 450€</option>
+                                    <option value="800">habitacion doble con vista al mar 800€</option>
+                                    <option value="1500">Suite presidencial con tina, sauna y jacussi 1500€</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="tiempo"><b>Tiempo de estancia en noches:</b></label>
+                                <input type="number" name="tiempo" id="tiempo" min="1" max="31" value="1">                        
+                            </div>                            
+                            <div id="extras">
+                                <p><b>Servicios extra:</b></p>
+                                <div>
+                                    <label for="bufet">Bufet con servicio al cuarto (130€)</label>
+                                    <input type="checkbox" name="bufet" id="bufet" value="130">
+                                </div>
+                                <div>
+                                    <label for="gimnasio">Gimnasio (30€)</label>
+                                    <input type="checkbox" name="gimnasio" id="gimnasio" value="30">
+                                </div>
+                                <div>
+                                    <label for="decRoman">Decoracion Romantica (50€)</label>
+                                    <input type="checkbox" name="decRoman" id="decRoman" value="50">
+                                </div>
+                                <div>
+                                    <label for="champan">Champagne (95€)</label>
+                                    <input type="checkbox" name="champan" id="champan" value="95">
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <label for="totalSinDescuento"><b>Total sin descuento: </b></label>
+                                <input type="text" id="totalSinDescuento" value="0">
+                            </div>
+
+                            <div>
+                                <label for="totalConDescuento"><b>Total con descuento: </b></label>
+                                <input type="text" id="totalConDescuento" value="0">
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="aceptarCondiciones">
+                        <br>
+                        <label for="condiciones">Acepta los <a href="./terYCond.html" class="terminos" target="_blank">terminos y condiciones</a></label>
+                        <input type="checkbox" name="condiciones" id="condiciones">
+                        <br>
+                    </div>
+                    <div class="botones">
+                        <input type="submit" value="Enviar" id="enviar" name="enviar">
+                        <input type="reset" name="reset" id="reset" value="Borrar todo">
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Todos los derechos reservados Copyright 2024</p>
+        <div class="container-iconRedes">
+
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                <img src="../assets/images/facebook-color-svgrepo-com.svg" alt="" class="iconRedes">
+            </a>
+            
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <img src="../assets/images/instagram-1-svgrepo-com(1).svg" alt="" class="iconRedes">
+            </a>
+
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+                <img src="../assets/images/youtube-svgrepo-com.svg" alt="" class="iconRedes">
+            </a>
+        </div>
+    </footer>
+    
+    <script src="../js/lightbox-plus-jquery.js"></script>
+    <script src="../js/formulario.js"></script>
+    <script src="../js/misScripts.js"></script>
+
+</body>
+</html>

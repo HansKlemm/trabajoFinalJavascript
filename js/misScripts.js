@@ -1,6 +1,7 @@
 
 const noticias = document.getElementById('container-news');
-const urlNot = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=e2e2fb27d47e444cb1fbdbe04cf0dce1&pageSize=6';
+const key = '5ea337e57f0293769a990e81926406f9'
+const urlNot = `https://api.mediastack.com/v1/news?access_key=${key}&languages=es&country=co,-es`;
 
 var reqNot = new Request(urlNot);
 
@@ -16,18 +17,36 @@ fetch(reqNot)
     })
     .then(data => {
         // Aquí 'data' es el objeto con los datos de la API
-        //console.log(data)
-        data.articles.forEach(noticia => {
+        console.log(data)
+        
+        const contenidoNoticias = data.data.filter(noticia => noticia.image);
+        contenidoNoticias.forEach(noticia => {
+
+            let contenidoImagen = '';
+
+            if (noticia.image.endsWith('.mp3')) {
+                contenidoImagen = `
+                    <audio controls>
+                        <source src="${noticia.image}" type="audio/mp3">
+                        Tu navegador no soporta el reproductor de audio.
+                    </audio>
+                `;
+            } else {
+                contenidoImagen = `
+                <a href="${noticia.url}" target="_blank">    
+                    <img src="${noticia.image}" alt="Imagen de la noticia" class="urlToImage">
+                </a>
+            `;
+            }
+
             noticias.innerHTML +=
             `
             <div class="tarjeta">
-                <h1 class="titleTarget">${noticia.title}</h1>
-                <a href="${noticia.url}" target="_blank">    
-                    <img src="${noticia.urlToImage}" alt="" class="urlToImage">
-                </a>                
-                <p class="description">${noticia.description}</p>
+                ${contenidoImagen}
+                <h1 class="titleTarget protest gradientText">${noticia.title}</h1>
+                <p class="description gradientText">${noticia.description}</p>
                 <a href="${noticia.url}" class="enlaceTarget" target="_black">Continuar leyendo.</a>
-                <p class="publishedAt">${noticia.publishedAt}</p>
+                <p class="publishedAt gradientText">${noticia.published_at}</p>
             </div>
             `;
         });
@@ -36,6 +55,7 @@ fetch(reqNot)
         // Muestra cualquier error en la consola
         //console.log('Hubo un error:', error);
     });
+
 
 const juegos = document.getElementById('container-games');
 const urlPlataforma = 'https://api.rawg.io/api/platforms?key=1215ba775b164997a8197ccd471f09a7'
@@ -73,10 +93,10 @@ const urlGames = 'https://api.rawg.io/api/games?key=1215ba775b164997a8197ccd471f
                 `
                 <div class="tarjetaGame">
                     <img src="${resultado.background_image}" alt="" class="urlToImageGame">
-                    <h1 class="titleTarget">${resultado.name}</h1>
-                    <p class="description"><b>Valoración:</b> ${resultado.rating}</P>
-                    <p class="description"><b>Fecha de publicación:</b> ${resultado.released}</P>
-                    <p class="publishedAt">${resultado.updated}</p>
+                    <h1 class="titleTarget gradientText protest">${resultado.name}</h1>
+                    <p class="description gradientText"><b>Valoración:</b> ${resultado.rating}</P>
+                    <p class="description gradientText"><b>Fecha de publicación:</b> ${resultado.released}</P>
+                    <p class="publishedAt gradientText">${resultado.updated}</p>
                 </div>
                 `;
             })
